@@ -1,0 +1,6 @@
+.idea
+target/
+project/project
+bin/
+local.properties
+proguard-sbt.txt
