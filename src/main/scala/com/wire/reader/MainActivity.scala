@@ -48,8 +48,13 @@ class MainActivity extends Activity with CustomMacroidTweaks with Contexts[Activ
         wire(items) <~
         FuncOn.itemLongClick[ListView] {
         (adapterView: AdapterView[_], _: View, index: Int, _: Long) =>
-        {  messages -= messageFromListView(adapterView, index)
-           (items <~ messageListable.listAdapterTweak(messages.toList)) ~ Ui(true) }
+          (dialog("Are you sure?") <~
+              positiveYes({
+                messages -= messageFromListView(adapterView, index)
+                (items <~ messageListable.listAdapterTweak(messages.toList)) ~ Ui(true)
+              }) <~
+              negativeNo(Ui(true)) <~
+              speak) ~ Ui(true)
       }
 
     ) <~ (portrait ? vertical | horizontal) <~ Transformer {
