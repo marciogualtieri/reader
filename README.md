@@ -89,18 +89,6 @@ named "test".
 
 You will need to start the emulator in a separated terminal before running Android instrumented and UI tests.
 
-### Macroid
-
-I have chosen [macroid](https://github.com/47deg/macroid) for Android UI development, which consists of a library of 
-Scala macros for UI creation.
-
-You will find some documentation on macroid's Scala macros (including examples) 
-[here](http://47deg.github.io/macroid/docs/).
-
-After fiddling with a couple of different choices, among them [scaloid](https://github.com/pocorall/scaloid). I feel 
-like macroid is the best option at the moment in terms of popularity and compatibility with the latest Android APIs 
-(scaloid, it's stronger competitor, only supports the old APIs).
-
 ### Testing Setup
 
 Currently, this project supports the following tests:
@@ -113,3 +101,20 @@ require the emulator or an actual Android device).
 To run both instrumented and UI tests, execute the following command:
 
     sbt android:test
+
+
+### Third-party Libraries
+
+I have chosen [macroid](https://github.com/47deg/macroid) for Android UI development, which consists of a library of 
+Scala macros for UI creation.
+
+You will find some documentation on macroid's Scala macros (including examples) 
+[here](http://47deg.github.io/macroid/docs/).
+
+After fiddling with a couple of different choices, among them [scaloid](https://github.com/pocorall/scaloid). I feel 
+like macroid is the best option at the moment in terms of popularity and compatibility with the latest Android APIs 
+(scaloid, it's stronger competitor, only supports the old APIs).
+
+For fetching HTTPS resources, I have chosen [dispatch](http://dispatch.databinder.net/Dispatch.html). For testing HTTPS
+requests I have chosen [Wiremock](http://wiremock.org/), which, even though is Java, is the most robust choice at the 
+moment.

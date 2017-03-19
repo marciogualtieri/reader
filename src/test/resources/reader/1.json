@@ -1,0 +1,17 @@
+[
+  {
+    "id": "customer1",
+    "time": 1489874220,
+    "text": "Now, what is the difference between the GT and the GTS?"
+  },
+  {
+    "id": "larry1",
+    "time": 1489874400,
+    "text": "OK, the GTS is \"guaranteed tremendous safety\"."
+  },
+  {
+    "id": "customer2",
+    "time": 1489874580,
+    "text": "So, without the \"S\", it's just \"guaranteed tremendous\"?"
+  }
+]

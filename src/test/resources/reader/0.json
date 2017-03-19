@@ -1,0 +1,22 @@
+[
+  {
+    "id": "george1",
+    "time": 1489874220,
+    "text": "You’ve got to apologize."
+  },
+  {
+    "id": "jerry1",
+    "time": 1489874400,
+    "text": "Why?"
+  },
+  {
+    "id": "george2",
+    "time": 1489874580,
+    "text": "Because it’s the mature and adult thing to do."
+  },
+  {
+    "id": "jerry2",
+    "time": 1489874760,
+    "text": "How does that affect me?"
+  }
+]

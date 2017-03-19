@@ -7,6 +7,8 @@
             android:minSdkVersion="9"
             android:targetSdkVersion="23"/>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
             android:label="Macroid Starter"
             android:icon="@drawable/android:star_big_on">

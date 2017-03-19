@@ -1,94 +1,63 @@
 package com.wire.reader
 
 import scala.language.postfixOps
-
-import android.os.Bundle
-import android.widget.{ListView, LinearLayout, TextView, Button}
+import android.os.{Bundle, StrictMode}
+import android.widget._
 import android.view.ViewGroup.LayoutParams._
-import android.view.{Gravity, View}
+import android.view.View
 import android.app.Activity
-import android.graphics.Color
-
-// import macroid stuff
 import macroid._
 import macroid.FullDsl._
-import macroid.contrib._
-import macroid.viewable._
 
-import scala.concurrent.ExecutionContext.Implicits.global
+import scala.collection.mutable.ListBuffer
 
-// a simple case class to demonstrate listing things
-case class ColorString(text: String, color: Int)
-
-
-// define our helpers in a mixable trait
-trait Styles {
-    // sets text, large font size and a long click handler
-    def caption(cap: String)(implicit ctx: ContextWrapper): Tweak[TextView] =
-        text(cap) + TextTweaks.large + On.longClick {
-            (toast("I’m a caption") <~ gravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL) <~ fry) ~
-              Ui(true)
-        }
-
-    // allows to display colored strings in a ListView
-    def colorStringListable(implicit ctx: ContextWrapper): Listable[ColorString, TextView] =
-        Listable[ColorString].tw(
-            w[TextView] <~ TextTweaks.typeface("sans-serif-condensed") <~ TextTweaks.medium
-        ) { colorString ⇒
-            text(colorString.text) + TextTweaks.color(colorString.color)
-        }
+object MainActivityWidgets extends Enumeration {
+  val READ_BUTTON, QUIT_BUTTON, MESSAGE_LIST = Value
 }
 
-// mix in Contexts for Activity
-class MainActivity extends Activity with Styles with Contexts[Activity] {
-    // prepare a variable to hold our text view
-    var cap = slot[TextView]
+class MainActivity extends Activity with CustomMacroidTweaks with Contexts[Activity] {
 
-    // some colored strings
-    val colorStrings = List(
-        ColorString("Coquelicot", Color.parseColor("#EC4908")),
-        ColorString("Smaragdine", Color.parseColor("#009874")),
-        ColorString("Glaucous",   Color.parseColor("#6082B6"))
-    )
+  var items: Option[ListView] = slot[ListView]
+  var messages: ListBuffer[Message] = ListBuffer.empty[Message]
 
-    override def onCreate(savedInstanceState: Bundle) = {
-        super.onCreate(savedInstanceState)
-        // this will be a linear layout
-        val view = l[LinearLayout](
-            // a text view
-            w[TextView] <~
-              id(123) <~
-              // use our helper
-              caption("Howdy?") <~
-              // assign to cap
-              wire(cap),
+  override def onCreate(savedInstanceState: Bundle): Unit = {
+    super.onCreate(savedInstanceState)
 
-            // a button
-            w[Button] <~
-              // set text
-              text("Click me!") <~
-              // set layout params (LinearLayout.LayoutParams will be used)
-              layoutParams[LinearLayout](MATCH_PARENT, WRAP_CONTENT) <~
-              // specify a background image
-              BgTweaks.res(R.drawable.btn_green_matte) <~
-              // set click handler
-              On.click {
-                  // with <~~ we can apply snails like `delay`
-                  // tweaks coming after them will wait till they finish
-                  cap <~ text("Button clicked!") <~~ delay(1000) <~ text("Howdy")
-              },
+    val policy = new StrictMode.ThreadPolicy.Builder().permitAll().build()
+    StrictMode.setThreadPolicy(policy)
 
-            // a list view
-            w[ListView] <~
-              // use a listable to display the colored strings
-              colorStringListable.listAdapterTweak(colorStrings)
-        ) <~
-          // match layout orientation to screen orientation
-          (portrait ? vertical | horizontal) <~ Transformer {
-            // here we set a padding of 4 dp for all inner views
-            case x: View ⇒ x <~ padding(all = 4 dp)
-        }
+    val endpoint = HttpFetcher("https", "rawgit.com", 443, "/wireapp/android_test_app/master/endpoint")
+    val offset = 9
 
-        setContentView(view.get)
-    }
+    val view = l[LinearLayout](
+
+      w[Button] <~
+        id(MainActivityWidgets.READ_BUTTON.id) <~
+        text("Read") <~ layoutParams[LinearLayout](MATCH_PARENT, WRAP_CONTENT)
+        <~ On.click { messages ++= endpoint.messages(offset)
+        (items <~ messageListable.listAdapterTweak(messages)) ~ Ui(true) },
+
+      w[Button] <~
+        id(MainActivityWidgets.QUIT_BUTTON.id) <~
+        text("Quit") <~ layoutParams[LinearLayout](MATCH_PARENT, WRAP_CONTENT)
+        <~ On.click { finish()
+        Ui(true) },
+
+      w[ListView] <~
+        id(MainActivityWidgets.MESSAGE_LIST.id) <~
+        wire(items) <~
+        FuncOn.itemLongClick[ListView] {
+        (adapterView: AdapterView[_], _: View, index: Int, _: Long) =>
+        {  messages -= messageFromListView(adapterView, index)
+           (items <~ messageListable.listAdapterTweak(messages.toList)) ~ Ui(true) }
+      }
+
+    ) <~ (portrait ? vertical | horizontal) <~ Transformer {
+      case x: View => x <~ padding(all = 4 dp) }
+
+    setContentView(view.get)
+  }
+
+  def messageFromListView(adapterView: AdapterView[_], index: Int): Message =
+    adapterView.getItemAtPosition(index).asInstanceOf[Message]
 }
