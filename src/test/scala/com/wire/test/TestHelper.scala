@@ -27,7 +27,8 @@ trait TestHelper {
     Message(id = "robot1", time = 1489874220L, text = "What's my purpose?", index = 2),
     Message(id = "rick1", time = 1489874400L, text = "You pass butter.", index = 2),
     Message(id = "robot2", time = 1489874580L, text = "Oh, my god...", index = 2),
-    Message(id = "rick2", time = 1489874760L, text = "Yeah. Welcome to the club, pal.", index = 2)
+    Message(id = "rick2", time = 1489874760L, text = "Yeah. Welcome to the club, pal.", index = 2),
+    Message(id = "rick3", time = 1489874940L, text = "https://rawgit.com/marciogualtieri/reader/master/src/test/resources/reader/rickandmorty.png", index = 2)
   )
 
   private val KeyPath: String = getClass.getResource("/server.jks").getPath

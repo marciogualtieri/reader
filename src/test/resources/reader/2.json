@@ -18,5 +18,10 @@
     "id": "rick2",
     "time": 1489874760,
     "text": "Yeah. Welcome to the club, pal."
+  },
+  {
+    "id": "rick3",
+    "time": 1489874940,
+    "text": "https://rawgit.com/marciogualtieri/reader/master/src/test/resources/reader/rickandmorty.png"
   }
 ]
