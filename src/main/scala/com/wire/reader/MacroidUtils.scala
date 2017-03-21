@@ -2,7 +2,7 @@ package com.wire.reader
 
 import java.text.SimpleDateFormat
 
-import android.content.Context
+import android.content.{Context, Intent}
 import android.graphics.Color
 import android.widget._
 import macroid.FullDsl._
@@ -13,9 +13,9 @@ import macroid.viewable.Listable
 
 import scala.language.postfixOps
 
-case class CustomTimeView(context: Context) extends TextView(context)
 
-case class CustomIdView(context: Context) extends TextView(context)
+
+
 
 trait CustomMacroidTweaks {
 
