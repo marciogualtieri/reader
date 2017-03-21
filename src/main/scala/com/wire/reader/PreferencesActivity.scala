@@ -11,7 +11,7 @@ import android.app.Activity
 import android.graphics.Color
 import macroid._
 import macroid.FullDsl._
-import com.wire.reader.enums.PreferencesActivityWidgets
+import com.wire.reader.ui.enums.PreferencesActivityWidgets
 import macroid.contrib.TextTweaks
 
 class PreferencesActivity extends Activity with Contexts[Activity] {

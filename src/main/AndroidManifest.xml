@@ -4,13 +4,13 @@
           android:versionName="0.1">
 
     <uses-sdk
-            android:minSdkVersion="9"
+            android:minSdkVersion="16"
             android:targetSdkVersion="23"/>
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-            android:label="Macroid Starter"
+            android:label="Message Reader"
             android:icon="@drawable/android:star_big_on">
 
         <activity
@@ -20,6 +20,14 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+
+        <activity android:label="Preferences"
+                  android:name=".PreferencesActivity"
+                  android:parentActivityName=".MainActivity" >
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".MainActivity" />
         </activity>
 
     </application>

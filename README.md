@@ -85,7 +85,7 @@ named "test".
 
 #### Start the Emulator
 
-    ~/.android/sbt/sdk/tools/emulator -avg test
+    ~/.android/sbt/sdk/tools/emulator -avd test
 
 You will need to start the emulator in a separated terminal before running Android instrumented and UI tests.
 

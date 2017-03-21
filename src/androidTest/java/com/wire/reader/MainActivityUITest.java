@@ -1,41 +1,57 @@
 package com.wire.reader;
 
-import org.junit.Before;
+import android.app.Activity;
+import android.app.Instrumentation;
+import android.support.test.filters.LargeTest;
+import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
+import com.wire.reader.ui.enums.MainActivityWidgets;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import android.app.Activity;
-import android.support.test.espresso.action.ViewActions;
-import android.support.test.espresso.matcher.ViewMatchers;
-import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
-import android.support.test.filters.LargeTest;
-import android.test.ActivityInstrumentationTestCase2;
-
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static junit.framework.Assert.assertNotNull;
+
+import android.support.test.InstrumentationRegistry;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class MainActivityUITest {
 
-    private String mStringToBetyped;
-
     @Rule
-    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
-            MainActivity.class);
+    public ActivityTestRule<MainActivity> mainActivityRule =
+            new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void whenButtonClick_thenGetTextMessage() {
-        onView(withText("Click me!"))
-                .perform(click());
-        onView(withId(123))
-                .check(matches(withText("Button clicked!")));
+    public void whenPreferencesClick_thenOpenPreferences() {
+        Instrumentation.ActivityMonitor prefsActivityMonitor = createActivityMonitor(PreferencesActivity.class);
+        onView(withId(MainActivityWidgets.PREFS_BUTTON.id())).perform(click());
+        assertActivityExists(prefsActivityMonitor);
     }
+
+    @Test
+    public void whenReadClick_thenGetMessages() {
+        onView(withId(MainActivityWidgets.READ_BUTTON.id())).perform(click());
+    }
+
+    @Test
+    public void whenQuitClick_thenFinishMainActivity() {
+        onView(withId(MainActivityWidgets.QUIT_BUTTON.id())).perform(click());
+    }
+
+    private Instrumentation.ActivityMonitor createActivityMonitor(Class activityClass) {
+        return(InstrumentationRegistry.getInstrumentation()
+                .addMonitor(activityClass.getName(), null, false));
+    }
+
+    private void assertActivityExists(Instrumentation.ActivityMonitor activityMonitor) {
+        Activity prefsActivity = InstrumentationRegistry
+                .getInstrumentation()
+                .waitForMonitorWithTimeout(activityMonitor, 5000);
+        assertNotNull(prefsActivity);
+    }
+
 }

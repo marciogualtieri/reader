@@ -15,12 +15,12 @@ abstract class Fetcher {
   def messages(offset: Int): List[Message]
 }
 
-case class HttpFetcher(protocol: String, host: String, port: Int, resource: String) extends Fetcher {
+case class HttpFetcher(endpoint: String) extends Fetcher {
 
   val client = new HttpClient
 
   override def messages(offset: Int): List[Message] = {
-    Try(client.get(s"$protocol://$host:$port/$resource/$offset.json")) match {
+    Try(client.get(s"$endpoint/$offset.json")) match {
       case Success(response) =>
        messagesFromResponse(response, offset) ++ messages(offset + 1)
       case Failure(_: FileNotFoundException) => List.empty[Message]

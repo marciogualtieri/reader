@@ -9,9 +9,10 @@ import android.view.ViewGroup.LayoutParams._
 import android.view.{Gravity, View}
 import android.app.Activity
 import android.content.Intent
+import com.facebook.drawee.backends.pipeline.Fresco
 import macroid._
 import macroid.FullDsl._
-import com.wire.reader.enums.MainActivityWidgets
+import com.wire.reader.ui.enums.MainActivityWidgets
 import pl.droidsonroids.gif.GifImageView
 
 import scala.collection.mutable.ListBuffer
@@ -29,6 +30,8 @@ class MainActivity extends Activity with CustomMacroidTweaks with Contexts[Activ
 
   override def onCreate(savedInstanceState: Bundle): Unit = {
     super.onCreate(savedInstanceState)
+
+    Fresco.initialize(this)
 
     val policy = new StrictMode.ThreadPolicy.Builder().permitAll().build()
     StrictMode.setThreadPolicy(policy)

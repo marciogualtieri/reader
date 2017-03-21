@@ -2,10 +2,11 @@ package com.wire.reader
 
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 import com.wire.test.TestHelper
+import java.net.UnknownHostException
 
 class HttpFetcherTest extends FlatSpec with Matchers with BeforeAndAfterAll with TestHelper {
 
-  val endpoint = HttpFetcher("https", "localhost", 8443, "/reader")
+  val endpoint = HttpFetcher("https://localhost:8443/reader")
 
   override def beforeAll: Unit = {
     wireMockServer.start()
@@ -37,6 +38,13 @@ class HttpFetcherTest extends FlatSpec with Matchers with BeforeAndAfterAll with
   "Http Endpoint" should "return no messages for non-existent page." in {
     val messages = endpoint.messages(3)
     messages shouldBe List.empty[Message]
+  }
+
+  "Http Endpoint" should "throws exception for non-existent host." in {
+    intercept[UnknownHostException] {
+      val endpoint = HttpFetcher("https://host.does.not.exist")
+      val messages = endpoint.messages(0)
+    }
   }
 
 }
