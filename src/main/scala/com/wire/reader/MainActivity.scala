@@ -9,10 +9,12 @@ import android.view.ViewGroup.LayoutParams._
 import android.view.{Gravity, View}
 import android.app.Activity
 import android.content.Intent
-import com.facebook.drawee.backends.pipeline.Fresco
+import com.squareup.picasso.Picasso
 import macroid._
 import macroid.FullDsl._
 import com.wire.reader.ui.enums.MainActivityWidgets
+import macroid.contrib.ImageTweaks
+import macroid.contrib.Layouts.VerticalLinearLayout
 import pl.droidsonroids.gif.GifImageView
 
 import scala.collection.mutable.ListBuffer
@@ -30,8 +32,6 @@ class MainActivity extends Activity with CustomMacroidTweaks with Contexts[Activ
 
   override def onCreate(savedInstanceState: Bundle): Unit = {
     super.onCreate(savedInstanceState)
-
-    Fresco.initialize(this)
 
     val policy = new StrictMode.ThreadPolicy.Builder().permitAll().build()
     StrictMode.setThreadPolicy(policy)
@@ -107,4 +107,9 @@ class MainActivity extends Activity with CustomMacroidTweaks with Contexts[Activ
 
   def messageFromListView(adapterView: AdapterView[_], index: Int): Message =
     adapterView.getItemAtPosition(index).asInstanceOf[Message]
+
+private def isLink(s: String): Boolean = {
+  val pattern = "^https?://\\S+$".r
+  pattern.pattern.matcher(s).matches
+}
 }

@@ -1,7 +1,7 @@
 package com.wire.reader.ui.enums;
 
 public enum PreferencesActivityWidgets {
-    SAVE_BUTTON(4), CANCEL_BUTTON(5), ENDPOINT_TEXT(6), OFFSET_TEXT(11);
+    SAVE_BUTTON(4), CANCEL_BUTTON(5), ENDPOINT_TEXT(6), OFFSET_NUMBER(11);
 
     private final int id;
 

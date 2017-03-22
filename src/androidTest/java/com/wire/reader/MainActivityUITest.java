@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.swipeDown;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static junit.framework.Assert.assertNotNull;
 
@@ -34,7 +35,9 @@ public class MainActivityUITest {
 
     @Test
     public void whenReadClick_thenGetMessages() {
-        onView(withId(MainActivityWidgets.READ_BUTTON.id())).perform(click());
+        onView(withId(MainActivityWidgets.READ_BUTTON.id()))
+                .perform(click())
+                .perform(swipeDown());
     }
 
     @Test

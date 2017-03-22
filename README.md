@@ -83,12 +83,35 @@ Change according with the platform you want to develop for.
 Change according with the platform you need and the name you want for the emulator. In this example, the emulator is
 named "test".
 
-#### Start the Emulator
+#### Running the Emulator
 
     ~/.android/sbt/sdk/tools/emulator -avd test
 
 You will need to start the emulator in a separated terminal before running Android instrumented and UI tests.
 
+For the emulator's log file, execute the following command:
+
+    ~/.android/sbt/sdk/platform-tools/adb logcat
+
+    ~/.android/sbt/sdk/platform-tools/adb devices
+
+     ~/.android/sbt/sdk/platform-tools/adb devices -l
+     ~/.android/sbt/sdk/platform-tools/adb -s model:SM_G920F shell
+     
+     
+     /etc/udev/rules.d/51-android.rules
+     
+     SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="plugdev"
+     
+     https://developer.android.com/studio/run/device.html#VendorIds
+     
+     sudo chmod a+r /etc/udev/rules.d/51-android.rules
+     
+     ~/.android/sbt/sdk/platform-tools/adb -s model:Android_SDK_built_for_x86_64 logcat
+
+     
+     https://github.com/ACRA/acra/wiki/BasicSetup
+     
 ### Testing Setup
 
 Currently, this project supports the following tests:
@@ -115,6 +138,17 @@ After fiddling with a couple of different choices, among them [scaloid](https://
 like macroid is the best option at the moment in terms of popularity and compatibility with the latest Android APIs 
 (scaloid, it's stronger competitor, only supports the old APIs).
 
-For fetching HTTPS resources, I have chosen [dispatch](http://dispatch.databinder.net/Dispatch.html). For testing HTTPS
-requests I have chosen [Wiremock](http://wiremock.org/), which, even though is Java, is the most robust choice at the 
-moment.
+For fetching HTTPS resources, I have initially chosen [dispatch](http://dispatch.databinder.net/Dispatch.html), but it
+seems isn't compatible with Android devices (from version 0.8 onwards), for this reason I have decided for using the
+[Apache HttpClient](https://hc.apache.org/httpcomponents-client-ga/index.html), which seems the most reliable option
+for this purpose.
+
+For fetching online images, I have chosen [Picasso](http://square.github.io/picasso/), which seem nicer than 
+[Facebook's Fresco](https://github.com/facebook/fresco) and 
+[Droidparts's Image Fetcher](http://droidparts.org/image_fetcher.html) (no longer under development).
+
+For mocking HTTPS endpoints I have chosen [Wiremock](http://wiremock.org/), which, even though is Java, is the most 
+robust choice at the moment. I'm only using it in the unit tests.
+
+For instrumented and UI tests, I'm using [Raw Git](https://rawgit.com) to make JSON files available in the projects Git
+project available to tests.

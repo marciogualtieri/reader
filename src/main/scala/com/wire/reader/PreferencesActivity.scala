@@ -12,7 +12,7 @@ import android.graphics.Color
 import macroid._
 import macroid.FullDsl._
 import com.wire.reader.ui.enums.PreferencesActivityWidgets
-import macroid.contrib.TextTweaks
+import macroid.contrib.{BgTweaks, TextTweaks}
 
 class PreferencesActivity extends Activity with Contexts[Activity] {
 
@@ -29,14 +29,19 @@ class PreferencesActivity extends Activity with Contexts[Activity] {
 
     val view = l[LinearLayout](
 
-      w[EditText] <~ text("Endoint: ") <~
-        TextTweaks.size(12) <~ TextTweaks.color(Color.parseColor("blue")),
-      w[EditText] <~ id(PreferencesActivityWidgets.ENDPOINT_TEXT.id) <~
-      text(endpoint),
+      w[TextView] <~ text("Endoint:") <~
+        TextTweaks.size(16) <~ TextTweaks.bold,
 
-      w[EditText] <~ text("Offset: ") <~
-        TextTweaks.size(12) <~ TextTweaks.color(Color.parseColor("blue")),
-      w[EditText] <~ id(PreferencesActivityWidgets.OFFSET_TEXT.id) <~
+      w[EditText] <~ id(PreferencesActivityWidgets.ENDPOINT_TEXT.id) <~
+        TextTweaks.size(14) <~
+        text(endpoint),
+
+      w[TextView] <~ text("Offset:") <~
+        TextTweaks.size(16) <~ TextTweaks.bold,
+
+      w[EditText] <~ id(PreferencesActivityWidgets.OFFSET_NUMBER.id) <~
+        TextTweaks.size(14) <~
+        TextTweaks.numeric <~
         text(offset.toString),
 
       w[Button] <~
@@ -44,7 +49,7 @@ class PreferencesActivity extends Activity with Contexts[Activity] {
         text("Save") <~ layoutParams[LinearLayout](MATCH_PARENT, WRAP_CONTENT) <~
         On.click {
           val endpoint = this.find[EditText](PreferencesActivityWidgets.ENDPOINT_TEXT.id)
-          val offset = this.find[EditText](PreferencesActivityWidgets.OFFSET_TEXT.id)
+          val offset = this.find[EditText](PreferencesActivityWidgets.OFFSET_NUMBER.id)
           val preferences = getSharedPreferences("READER_PREFERENCES", 0)
           val editor = preferences.edit()
           editor.putString("endpoint", endpoint.get.get.getText.toString)

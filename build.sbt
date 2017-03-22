@@ -27,26 +27,29 @@ libraryDependencies ++=
     aar("org.macroid" %% "macroid-viewable" % "2.0") ::
     aar("com.android.support" % "support-v4" % "25.0.1") ::
     aar("pl.droidsonroids.gif" % "android-gif-drawable" % "1.2.6") ::
-    aar("com.facebook.fresco" % "fresco" % "1.1.0") ::
+    "com.squareup.picasso" % "picasso" % "2.5.2" ::
     Nil
 dependencyOverrides += "org.scala-lang" % "scala-library" % "2.11.8"
+
 testAarWarning := false
 
 proguardScala in Android := true
 proguardOptions in Android ++=
   "-ignorewarnings" ::
     "-keep class scala.Dynamic" ::
-    "-keepattributes InnerClasses,EnclosingMethod" ::
+    "-keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod" ::
     "-dontwarn scala.**" ::
     "-dontwarn org.apache.**" ::
     "-dontnote org.apache.**" ::
+    "-dontwarn org.apache.commons.logging.**" ::
+    "-dontnote org.apache.commons.logging.**" ::
     "-dontwarn com.fasterxml.jackson.**" ::
     "-dontwarn com.thoughtworks.**" ::
     "-dontnote com.thoughtworks.**" ::
     "-dontwarn pl.droidsonroids.**" ::
     "-dontnote pl.droidsonroids.**" ::
-    "-dontwarn com.facebook.**" ::
-    "-dontnote com.facebook.**" ::
+    "-dontwarn com.squareup.picasso.**" ::
+    "-dontnote com.squareup.picasso.**" ::
     Nil
 
 packagingOptions in Android :=
