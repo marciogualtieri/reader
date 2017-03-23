@@ -17,9 +17,9 @@ libraryDependencies ++=
   "org.scalatest" %% "scalatest" % "3.0.1" % "test" ::
     "com.github.tomakehurst" % "wiremock" % "2.5.1" % "test" ::
     "ch.qos.logback" % "logback-classic" % "1.2.1" % "test" ::
-    "com.android.support.test" % "runner" % "0.5" % "androidTest" ::
-    "com.android.support.test.espresso" % "espresso-core" % "2.2.2" % "androidTest" ::
-    "com.google.guava" % "guava" % "18.0" % "test, androidTest" ::
+    "com.android.support.test" % "runner" % "0.5" ::
+    "com.android.support.test.espresso" % "espresso-core" % "2.2.2" ::
+    "com.google.guava" % "guava" % "18.0" % "test,androidTest" ::
     "com.google.code.findbugs" % "jsr305" % "3.0.1" ::
     "org.json4s" %% "json4s-jackson" % "3.5.0" ::
     "org.apache.httpcomponents" % "httpclient" % "4.5.3" ::
@@ -30,6 +30,7 @@ libraryDependencies ++=
     "com.squareup.picasso" % "picasso" % "2.5.2" ::
     Nil
 dependencyOverrides += "org.scala-lang" % "scala-library" % "2.11.8"
+dependencyOverrides += "com.google.code.findbugs" % "jsr305" % "3.0.1"
 
 testAarWarning := false
 
@@ -55,5 +56,5 @@ proguardOptions in Android ++=
 packagingOptions in Android :=
   PackagingOptions(excludes =
     Seq("META-INF/NOTICE", "META-INF/NOTICE.txt",
-      "META-INF/LICENSE", "META-INF/LICENSE.txt",
+      "META-INF/LICENSE", "META-INF/LICENSE.txt", "LICENSE", "LICENSE.txt",
       "META-INF/DEPENDENCIES"))

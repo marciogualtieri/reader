@@ -11,11 +11,12 @@
 
     <application
             android:label="Message Reader"
-            android:icon="@drawable/android:star_big_on">
+            android:icon="@drawable/reader_icon"
+            android:theme="@android:style/Theme.Light">
 
         <activity
                 android:label="Message Reader"
-                android:name=".MainActivity">
+                android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -23,11 +24,11 @@
         </activity>
 
         <activity android:label="Preferences"
-                  android:name=".PreferencesActivity"
-                  android:parentActivityName=".MainActivity" >
+                  android:name=".ui.PreferencesActivity"
+                  android:parentActivityName=".ui.MainActivity" >
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".MainActivity" />
+                    android:value=".ui.MainActivity" />
         </activity>
 
     </application>

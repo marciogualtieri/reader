@@ -1,28 +1,29 @@
-package com.wire.reader
+package com.wire.reader.ui
 
 import java.util.Properties
 
-import scala.language.postfixOps
-import android.os.{Bundle, StrictMode}
-import android.widget._
-import android.view.ViewGroup.LayoutParams._
-import android.view.{Gravity, View}
 import android.app.Activity
 import android.content.Intent
-import com.squareup.picasso.Picasso
-import macroid._
+import android.os.{Bundle, StrictMode}
+import android.view.ViewGroup.LayoutParams._
+import android.view.{Gravity, View}
+import android.widget._
+import com.wire.reader.R
+import com.wire.reader.entitities.Message
+import com.wire.reader.enums.ui.MainActivityWidgets
+import com.wire.reader.helpers.HttpFetcher
+import com.wire.reader.ui.customizations.CustomMacroidListables
 import macroid.FullDsl._
-import com.wire.reader.ui.enums.MainActivityWidgets
-import macroid.contrib.ImageTweaks
-import macroid.contrib.Layouts.VerticalLinearLayout
+import macroid._
 import pl.droidsonroids.gif.GifImageView
 
 import scala.collection.mutable.ListBuffer
-import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
+import scala.language.postfixOps
 import scala.util.{Failure, Success, Try}
 
-class MainActivity extends Activity with CustomMacroidTweaks with Contexts[Activity] {
+class MainActivity extends Activity with CustomMacroidListables with Contexts[Activity] {
 
   var items: Option[ListView] = slot[ListView]
   var progress: Option[GifImageView] = slot[GifImageView]
@@ -46,11 +47,11 @@ class MainActivity extends Activity with CustomMacroidTweaks with Contexts[Activ
       val fetcher = HttpFetcher(endpoint)
       val result = Try(fetcher.messages(offset)) match {
         case Success(content) => content
-        case Failure(e) => { Ui.run { dialog(e.getMessage) <~
+        case Failure(e) => Ui.run { dialog(e.getMessage) <~
                                         positiveYes({Ui(true)}) <~
                                         speak
                                      }
-                             List.empty[Message] }
+                           List.empty[Message]
       }
       messages ++= result
     }
@@ -82,16 +83,16 @@ class MainActivity extends Activity with CustomMacroidTweaks with Contexts[Activ
       w[ListView] <~
         id(MainActivityWidgets.MESSAGE_LIST.id) <~
         wire(items) <~
-        FuncOn.itemLongClick[ListView] {
-        (adapterView: AdapterView[_], _: View, index: Int, _: Long) =>
-          (dialog("Delete this message?") <~
+        (FuncOn itemLongClick[ListView] {
+          (adapterView: AdapterView[_], _: View, index: Int, _: Long) =>
+            (dialog("Delete this message?") <~
               positiveYes({
                 messages -= messageFromListView(adapterView, index)
                 (items <~ messageListable.listAdapterTweak(messages.toList)) ~ Ui(true)
               }) <~
               negativeNo(Ui(true)) <~
               speak) ~ Ui(true)
-      },
+        }),
 
       w[GifImageView] <~
         wire(progress) <~
@@ -105,11 +106,4 @@ class MainActivity extends Activity with CustomMacroidTweaks with Contexts[Activ
     setContentView(view.get)
   }
 
-  def messageFromListView(adapterView: AdapterView[_], index: Int): Message =
-    adapterView.getItemAtPosition(index).asInstanceOf[Message]
-
-private def isLink(s: String): Boolean = {
-  val pattern = "^https?://\\S+$".r
-  pattern.pattern.matcher(s).matches
-}
 }

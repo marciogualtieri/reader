@@ -1,13 +1,13 @@
-package com.wire.test
+package com.wire.reader.test.helpers
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock.{aResponse, get, stubFor, urlEqualTo}
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig
-import com.wire.reader.Message
+import com.wire.reader.entitities.Message
 
 import scala.io.Source
 
-trait TestHelper {
+trait TestHelpers {
 
   val TestMessagesEndpoint0 = List(
     Message(id = "george1", time = 1463372338305L, text = "You’ve got to apologize.", index = 0),
@@ -15,7 +15,6 @@ trait TestHelper {
     Message(id = "george2", time = 1463372338665L, text = "Because it’s the mature and adult thing to do.", index = 0),
     Message(id = "jerry2", time = 1463372338845L, text = "How does that affect me?", index = 0)
   )
-
 
   val TestMessagesEndpoint1 = List(
     Message(id = "customer1", time = 1463372339025L, text = "Now, what is the difference between the GT and the GTS?", index = 1),
@@ -34,7 +33,7 @@ trait TestHelper {
 
   private val KeyPath: String = getClass.getResource("/server.jks").getPath
 
-  val wireMockServer = new WireMockServer(wireMockConfig()
+  val WireMockServer = new WireMockServer(wireMockConfig()
     .httpsPort(8443)
     .needClientAuth(false)
     .trustStorePath(KeyPath)
