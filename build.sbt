@@ -19,7 +19,7 @@ libraryDependencies ++=
     "ch.qos.logback" % "logback-classic" % "1.2.1" % "test" ::
     "com.android.support.test" % "runner" % "0.5" ::
     "com.android.support.test.espresso" % "espresso-core" % "2.2.2" ::
-    "com.google.guava" % "guava" % "18.0" % "test,androidTest" ::
+    "com.google.guava" % "guava" % "18.0" % "test" ::
     "com.google.code.findbugs" % "jsr305" % "3.0.1" ::
     "org.json4s" %% "json4s-jackson" % "3.5.0" ::
     "org.apache.httpcomponents" % "httpclient" % "4.5.3" ::

@@ -13,7 +13,7 @@ import macroid.viewable.Listable
 
 import scala.language.postfixOps
 
-trait CustomMacroidListables extends CustomMacroidTweaks {
+trait CustomListables extends CustomTweaks {
 
   def messageListable(implicit ctx: ContextWrapper): Listable[Message, VerticalLinearLayout] = {
     Listable[Message].tr {
@@ -27,26 +27,29 @@ trait CustomMacroidListables extends CustomMacroidTweaks {
       case timeView: TimestampView => timeView <~ timeTweak(message.time)
       case idView: IdView => idView <~ text(message.id)
       case textView: TextView => textView <~ text(message.text)
-      case imageView: ImageView =>
-        imageView <~ id(imageView.hashCode)
-        if (isLink(message.text)) {
-          Picasso.`with`(ctx.application)
-            .load(message.text)
-            .error(R.drawable.error)
-            .placeholder(R.drawable.placeholder)
-            .into(imageView)
-          imageView <~ ImageTweaks.adjustBounds <~ show
-        }
-        else imageView <~ hide
+      case imageView: ImageView => downloadableImage(imageView, message.text)
     })
   }
 
-  def messageFromListView(adapterView: AdapterView[_], index: Int): Message =
+  def messageFromListable(adapterView: AdapterView[_], index: Int): Message =
     adapterView.getItemAtPosition(index).asInstanceOf[Message]
+
+  private def downloadableImage(imageView: ImageView, link: String)(implicit ctx: ContextWrapper): Ui[ImageView] = {
+    if (isLink(link)) {
+      makeImageDownloadable(imageView, link)
+      imageView <~ ImageTweaks.adjustBounds <~ show
+    }
+    else imageView <~ hide
+  }
+
+  private def makeImageDownloadable(imageView: ImageView, link: String)(implicit ctx: ContextWrapper): Unit =
+    Picasso.`with`(ctx.application).load(link)
+      .error(R.drawable.error)
+      .placeholder(R.drawable.placeholder)
+      .into(imageView)
 
   private def isLink(s: String): Boolean = {
     val pattern = "^https?://\\S+$".r
     pattern.pattern.matcher(s).matches
   }
-
 }

@@ -1,8 +1,6 @@
 package com.wire.reader.ui;
 
-import android.app.Activity;
 import android.app.Instrumentation;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -17,7 +15,9 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeDown;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static junit.framework.Assert.assertNotNull;
+import static com.wire.reader.ui.test.helpers.UITestHelper.assertActivityDoesNotExists;
+import static com.wire.reader.ui.test.helpers.UITestHelper.assertActivityExists;
+import static com.wire.reader.ui.test.helpers.UITestHelper.createActivityMonitor;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -40,27 +40,16 @@ public class MainActivityUITest {
     }
 
     @Test
+    public void whenQuitClick_thenFinishMainActivity() {
+        Instrumentation.ActivityMonitor mainActivityMonitor = createActivityMonitor(MainActivity.class);
+        assertActivityDoesNotExists(mainActivityMonitor);
+    }
+
+    @Test
     public void whenReadClick_thenGetMessages() {
         onView(withId(MainActivityWidgets.READ_BUTTON.id()))
                 .perform(click())
                 .perform(swipeDown());
-    }
-
-    @Test
-    public void whenQuitClick_thenFinishMainActivity() {
-        onView(withId(MainActivityWidgets.QUIT_BUTTON.id())).perform(click());
-    }
-
-    private Instrumentation.ActivityMonitor createActivityMonitor(Class activityClass) {
-        return(InstrumentationRegistry.getInstrumentation()
-                .addMonitor(activityClass.getName(), null, false));
-    }
-
-    private void assertActivityExists(Instrumentation.ActivityMonitor activityMonitor) {
-        Activity prefsActivity = InstrumentationRegistry
-                .getInstrumentation()
-                .waitForMonitorWithTimeout(activityMonitor, 5000);
-        assertNotNull(prefsActivity);
     }
 
 }
