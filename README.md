@@ -244,7 +244,7 @@ Once you have root access, you may use the shell to run UNIX commands on the emu
 
 For my own reference, I used [peek](https://github.com/phw/peek/releases) for generating a `*.gif` from my app in action.
 
-TODO:
+**TODO:**
  
  * Add support to [ACRA](https://github.com/ACRA/acra/wiki/BasicSetup) for easier debugging and crash monitoring.
  * Find a way to inject dependencies using different profiles (development, production, test, etc), so one can safely use
