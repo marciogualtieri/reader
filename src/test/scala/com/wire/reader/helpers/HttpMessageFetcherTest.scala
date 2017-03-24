@@ -3,10 +3,10 @@ package com.wire.reader.helpers
 import java.net.UnknownHostException
 
 import com.wire.reader.entitities.Message
-import com.wire.reader.test.helpers.TestHelpers
+import com.wire.reader.test.helpers.TestHelper
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
-class HttpMessageFetcherTest extends FlatSpec with Matchers with BeforeAndAfterAll with TestHelpers {
+class HttpMessageFetcherTest extends FlatSpec with Matchers with BeforeAndAfterAll with TestHelper {
 
   val fetcher = HttpMessageFetcher("https://localhost:8443/reader")
 
@@ -40,6 +40,7 @@ class HttpMessageFetcherTest extends FlatSpec with Matchers with BeforeAndAfterA
   "Http Fetcher" should "return no messages for non-existent page." in {
     val messages = fetcher.fetchedMessages(3)
     messages shouldBe List.empty[Message]
+    val serializer = JsonMessageSerializer()
   }
 
   "Http Fetcher" should "throws exception for non-existent host." in {

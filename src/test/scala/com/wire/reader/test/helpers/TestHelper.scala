@@ -7,8 +7,9 @@ import com.wire.reader.entitities.Message
 
 import scala.io.Source
 
-trait TestHelpers {
+trait TestHelper {
 
+  //scalastyle:off
   val TestMessagesEndpoint0 = List(
     Message(id = "george1", time = 1463372338305L, text = "You’ve got to apologize.", index = 0),
     Message(id = "jerry1", time = 1463372338485L, text = "Why?", index = 0),
@@ -30,6 +31,9 @@ trait TestHelpers {
     Message(id = "rick3", time = 1463372340285L, text = "https://rawgit.com/marciogualtieri/reader/master/src/test/resources/reader/rickandmorty.png", index = 2),
     Message(id = "rick4", time = 1463372340465L, text = "https://this.is.a/broken/link/image/morty.png", index = 2)
   )
+  //scalastyle:on
+
+  val AllTestMessages: List[Message] = TestMessagesEndpoint0 ++ TestMessagesEndpoint1 ++ TestMessagesEndpoint2
 
   private val KeyPath: String = getClass.getResource("/server.jks").getPath
 

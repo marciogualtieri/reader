@@ -244,19 +244,19 @@ In the example, `idVendor` is "04e8".
 
 You might need to delete files created by your app in the internal storage. You will need  `adb` root access:
 
-     ~/.android/sbt/sdk/platform-tools/adb -s model:SM_G920F shell root
+     ~/.android/sbt/sdk/platform-tools/adb -s model:Android_SDK_built_for_x86_64 root
 
 Once you have root access, you may use the shell to run UNIX commands on the emulator/device, e.g.:
 
      ~/.android/sbt/sdk/platform-tools/adb -s model:Android_SDK_built_for_x86_64 ls /data/data
      
-     ~/.android/sbt/sdk/platform-tools/adb -s model:Android_SDK_built_for_x86_64 rm -rf /data/data/com.wire.reader
+     ~/.android/sbt/sdk/platform-tools/adb -s model:Android_SDK_built_for_x86_64 shell rm -rf /data/data/com.wire.reader
 
 <a name="final-notes"/>
 
 ## Final Notes
 
-For my own reference, I used [peek](https://github.com/phw/peek/releases) for generating a `*.gif` from my app in action.
+For my own reference, I used [peek](https://github.com/phw/peek) for generating a `*.gif` from my app in action.
 
 **TODO:**
  
@@ -264,3 +264,5 @@ For my own reference, I used [peek](https://github.com/phw/peek/releases) for ge
  * Find a way to inject dependencies using different profiles (development, production, test, etc), so one can safely use
  mock-ups in tests.
  * Coverage reports with [sbt-scoverage](https://github.com/scoverage/sbt-scoverage).
+ * ScalaStyle seems to get confused with some of macroid's macros, so some checks will fail for macroid code.
+ * Refactor AndroidTests to Scala.

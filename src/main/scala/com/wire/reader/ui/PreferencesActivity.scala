@@ -19,25 +19,29 @@ class PreferencesActivity extends Activity with Contexts[Activity]
   with CustomTransformers
   with PreferencesEditor {
 
+  val TextLabelSize = 16
+  val TextEditSize = 14
+  val PaddingSize = 4
+
   override def onCreate(savedInstanceState: Bundle): Unit = {
     super.onCreate(savedInstanceState)
 
     val view = l[LinearLayout](
 
       w[TextView] <~ text("Endpoint:") <~
-        TextTweaks.size(16) <~ TextTweaks.bold,
+        TextTweaks.size(TextLabelSize) <~ TextTweaks.bold,
 
       w[EditText] <~
         id(PreferencesActivityWidgets.ENDPOINT_TEXT.id) <~
-        TextTweaks.size(14) <~
+        TextTweaks.size(TextEditSize) <~
         text(endpointPreferenceValue),
 
       w[TextView] <~ text("Offset:") <~
-        TextTweaks.size(16) <~ TextTweaks.bold,
+        TextTweaks.size(TextLabelSize) <~ TextTweaks.bold,
 
       w[EditText] <~
         id(PreferencesActivityWidgets.OFFSET_NUMBER.id) <~
-        TextTweaks.size(14) <~
+        TextTweaks.size(TextEditSize) <~
         TextTweaks.numeric <~
         text(offsetPreferenceValue.toString),
 
@@ -63,7 +67,7 @@ class PreferencesActivity extends Activity with Contexts[Activity]
 
     ) <~
       orientedLinearLayoutTweak <~
-      padsAll(4)
+      padsAll(PaddingSize)
 
     setContentView(view.get)
   }

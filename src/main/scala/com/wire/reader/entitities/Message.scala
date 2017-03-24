@@ -1,3 +1,4 @@
 package com.wire.reader.entitities
 
-case class Message(id: String, time: BigInt, text: String, index: Int)
+case class Message(id: String, time: Long, text: String, index: Int)
+

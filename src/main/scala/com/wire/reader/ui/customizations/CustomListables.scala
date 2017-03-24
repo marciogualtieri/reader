@@ -15,13 +15,19 @@ import scala.language.postfixOps
 
 trait CustomListables extends CustomTweaks {
 
+  val TextIdSize = 12
+
+  val TimestampTextSize = 12
+
+  val TextSize = 16
+
   def messageListable(implicit ctx: ContextWrapper): Listable[Message, VerticalLinearLayout] = {
     Listable[Message].tr {
       l[VerticalLinearLayout](
-        w[IdView] <~ TextTweaks.size(12) <~ TextTweaks.color(Color.parseColor("blue")),
-        w[TextView] <~ TextTweaks.size(16),
+        w[IdView] <~ TextTweaks.size(TextIdSize) <~ TextTweaks.color(Color.parseColor("blue")),
+        w[TextView] <~ TextTweaks.size(TextSize),
         w[ImageView] <~ hide,
-        w[TimestampView] <~ TextTweaks.size(12) <~ TextTweaks.color(Color.parseColor("green"))
+        w[TimestampView] <~ TextTweaks.size(TimestampTextSize) <~ TextTweaks.color(Color.parseColor("green"))
       )
     }(message => Transformer {
       case timeView: TimestampView => timeView <~ timeTweak(message.time)
@@ -39,7 +45,7 @@ trait CustomListables extends CustomTweaks {
       makeImageDownloadable(imageView, link)
       imageView <~ ImageTweaks.adjustBounds <~ show
     }
-    else imageView <~ hide
+    else { imageView <~ hide }
   }
 
   private def makeImageDownloadable(imageView: ImageView, link: String)(implicit ctx: ContextWrapper): Unit =

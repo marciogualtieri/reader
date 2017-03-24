@@ -48,3 +48,4 @@ trait PreferencesEditor extends Activity {
     getSharedPreferences("READER_PREFERENCES", 0)
 
 }
+

@@ -11,6 +11,8 @@ instrumentTestRunner :=
 
 platformTarget := "android-25"
 
+minSdkVersion := "19"
+
 javacOptions in Compile ++= "-source" :: "1.7" :: "-target" :: "1.7" :: Nil
 
 libraryDependencies ++=
@@ -58,3 +60,5 @@ packagingOptions in Android :=
     Seq("META-INF/NOTICE", "META-INF/NOTICE.txt",
       "META-INF/LICENSE", "META-INF/LICENSE.txt", "LICENSE", "LICENSE.txt",
       "META-INF/DEPENDENCIES"))
+
+scalastyleFailOnError := false

@@ -36,7 +36,7 @@ case class JsonMessageSerializer() extends MessageSerializer {
       JField("id", JString(id)) <- items
       JField("time", JInt(time)) <- items
       JField("text", JString(text)) <- items
-    } yield Message(id, time, text, index)
+    } yield Message(id, time.toLong, text, index)
   }
 
   private def parseMessagesFromJson(json: JValue): List[Message] = {
@@ -46,6 +46,6 @@ case class JsonMessageSerializer() extends MessageSerializer {
       JField("time", JInt(time)) <- items
       JField("text", JString(text)) <- items
       JField("index", JInt(index)) <- items
-    } yield Message(id, time, text, index.toInt)
+    } yield Message(id, time.toLong, text, index.toInt)
   }
 }
