@@ -16,13 +16,11 @@ import macroid._
 import pl.droidsonroids.gif.GifImageView
 
 import scala.collection.mutable.ListBuffer
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.io.Source
-import scala.util.{Failure, Success, Try}
-
 import scala.language.postfixOps
-
-import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.{Failure, Success, Try}
 
 class MainActivity extends Activity with Contexts[Activity]
   with CustomListables
@@ -46,10 +44,11 @@ class MainActivity extends Activity with Contexts[Activity]
 
     val view = l[LinearLayout](
 
+      l[LinearLayout](
         w[Button] <~
           id(MainActivityWidgets.READ_BUTTON.id) <~
           text("Read") <~
-          layoutParams[LinearLayout](MATCH_PARENT, WRAP_CONTENT) <~
+          layoutParams[LinearLayout](FILL_PARENT, WRAP_CONTENT, 1) <~
           On.click {
             (progressImageSlot <~ show) ~
               (messageListSlot <~~ Snails.wait(fetchingFutureTask)) ~~
@@ -60,46 +59,52 @@ class MainActivity extends Activity with Contexts[Activity]
         w[Button] <~
           id(MainActivityWidgets.PURGE_BUTTON.id) <~
           text("Purge") <~
-          layoutParams[LinearLayout](MATCH_PARENT, WRAP_CONTENT) <~
+          layoutParams[LinearLayout](FILL_PARENT, WRAP_CONTENT, 1) <~
           On.click(
             (dialog("Delete All Messages?") <~
               positiveYes(deleteAllMessagesTask()) <~
               negativeNo(Ui(true)) <~
               speak) ~ Ui(true)
-          ),
+          )
+      ) <~
+        layoutParams[LinearLayout](MATCH_PARENT, WRAP_CONTENT),
 
+      l[LinearLayout](
         w[Button] <~
           id(MainActivityWidgets.PREFS_BUTTON.id) <~
           text("Preferences") <~
-          layoutParams[LinearLayout](MATCH_PARENT, WRAP_CONTENT) <~
+          layoutParams[LinearLayout](FILL_PARENT, WRAP_CONTENT, 1) <~
           On.click(
             Ui(startActivity(new Intent(this, classOf[PreferencesActivity])))
           ),
 
         w[Button] <~
           id(MainActivityWidgets.QUIT_BUTTON.id) <~
-          text("Quit") <~ layoutParams[LinearLayout](MATCH_PARENT, WRAP_CONTENT) <~
+          layoutParams[LinearLayout](FILL_PARENT, WRAP_CONTENT, 1) <~
+          text("Quit") <~
           On.click(
             Ui(finish())
-          ),
+          )
+      )<~
+        layoutParams[LinearLayout](MATCH_PARENT, WRAP_CONTENT),
 
-        w[ListView] <~
-          id(MainActivityWidgets.MESSAGE_LIST.id) <~
-          wire(messageListSlot) <~
-          messageListable.listAdapterTweak(messages) <~
-          (FuncOn itemLongClick[ListView] {
-            (adapterView: AdapterView[_], _: View, index: Int, _: Long) =>
-              (dialog("Delete Message?") <~
-                positiveYes(deleteMessageTask(adapterView, index)) <~
-                negativeNo(Ui(true)) <~
-                speak) ~ Ui(true)
-          }),
+      w[ListView] <~
+        id(MainActivityWidgets.MESSAGE_LIST.id) <~
+        wire(messageListSlot) <~
+        messageListable.listAdapterTweak(messages) <~
+        (FuncOn itemLongClick[ListView] {
+          (adapterView: AdapterView[_], _: View, index: Int, _: Long) =>
+            (dialog("Delete Message?") <~
+              positiveYes(deleteMessageTask(adapterView, index)) <~
+              negativeNo(Ui(true)) <~
+              speak) ~ Ui(true)
+        }),
 
-        w[GifImageView] <~
-          id(MainActivityWidgets.PROGRESS_IMAGE.id) <~
-          wire(progressImageSlot) <~
-          gifImageTweak(R.drawable.progress) <~
-          hide
+      w[GifImageView] <~
+        id(MainActivityWidgets.PROGRESS_IMAGE.id) <~
+        wire(progressImageSlot) <~
+        gifImageTweak(R.drawable.progress) <~
+        hide
 
       ) <~
         padsAll(4) <~
