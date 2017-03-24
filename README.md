@@ -19,7 +19,7 @@
 
 ## Overview
 
-<center>![demo](images/demo.gif)</center>
+<p align="center"><img alt="Reader Demo" src="images/demo.gif" /></p>
 
 Reader is a simple android app whose purpose is to showcase my Scala/Android development skills.
  
