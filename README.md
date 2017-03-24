@@ -11,7 +11,7 @@
 #### [Android Emulator](#android-emulator)
 ### [Final Notes](#final-notes)
 
-<a name="overview"></a>
+<a name="overview"/>
 ## Overview
 
 <p align="center"><img alt="Reader Demo" src="images/demo.gif" /></p>
@@ -24,7 +24,7 @@ If a message's text is a link, the app will attempt to render it as an image and
 
 One can also change the app's configuration through a "Preferences" screen.
 
-<a name="deploying-and-running-the-application"></a>
+<a name="deploying-and-running-the-application"/>
 ## Deploying and Running the Application
 
 To deploy the application to the device:
@@ -38,7 +38,7 @@ To deploy the application and run:
 You will need to connect to an emulator or an actual Android phone connect to your computer's USB port.
 You will find some tips on the development's section.
 
-<a name="running-tests"></a>
+<a name="running-tests"/>
 ## Running Tests
 
 Currently, this project supports the following tests:
@@ -58,7 +58,7 @@ To run both instrumented and UI tests, execute the following command:
 
     sbt clean android:test
 
-<a name="application-design"></a>
+<a name="application-design"/>
 ## Application Design
 
 As much as I would like to use Scala for the whole project, a few components (particularly in tests) needed to be 
@@ -68,7 +68,7 @@ latest AndroidTest APIs.
 Even though there are many HTTP clients available in Scala, I couldn't find one fully compatible with Android,
 therefore using a Java one (more details in the next section).
 
-<a name="third-party-libraries"></a>
+<a name="third-party-libraries"/>
 ## Third-party Libraries
 
 I have chosen [macroid](https://github.com/47deg/macroid) for Android UI development, which consists of a library of 
@@ -108,7 +108,7 @@ faster.
 For the instrumented and UI tests, I'm using [Raw Git](https://rawgit.com) to serve the test JSON files available in
  this project's Git repository. Tests files are available under `src/test/resources/reader`.
 
-<a name="code-quality-analysis"></a>
+<a name="code-quality-analysis"/>
 ## Code Quality Analysis
 
 I always run IntelliJ's `Analyze > Inspect Code` before I commit any code. I'm also using 
@@ -119,14 +119,14 @@ To run analysis, execute the following command:
 
       sbt scalastyle
 
-<a name="developer-notes"></a>
+<a name="developer-notes"/>
 ## Developer Notes
 
 I'm putting the steps required to create an android development environment in this section for my own reference.
 That was the first time I had to setup a development environment, so I might as well save the information for future 
 use while it's fresh in my memory.
 
-<a name="creating-an-android-project"></a>
+<a name="creating-an-android-project"/>
 ### Creating an Android Project
 
 I'm using [sbt-android](https://github.com/scala-android/sbt-android) for this purpose.
@@ -152,7 +152,7 @@ If you have an Android SDK installed, you should have the environment variables 
 set in your `.bashrc` file. If you don't, `sbt-android` will download the latest available version for you and install
 it under `~/.android/sbt/sdk` as they are needed.
 
-<a name="android-emulator"></a>
+<a name="android-emulator"/>
 ### Android Emulator
 
 #### Install the Emulator
@@ -243,7 +243,7 @@ Once you have root access, you may use the shell to run UNIX commands on the emu
      
      ~/.android/sbt/sdk/platform-tools/adb -s model:Android_SDK_built_for_x86_64 rm -rf /data/data/com.wire.reader
 
-<a name="final-notes"></a>
+<a name="final-notes"/>
 ## Final Notes
 
 For my own reference, I used [peek](https://github.com/phw/peek/releases) for generating a `*.gif` from my app in action.
