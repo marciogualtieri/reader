@@ -8,7 +8,7 @@
 ### [Code Quality Analysis](#code-quality-analysis)
 ### [Developer Notes](#developer-notes)
 #### [Creating an Android Project](#creating-an-android-project)
-#### [Android Emulator](android-emulator)
+#### [Android Emulator](#android-emulator)
 ### [Final Notes](#final-notes)
 
 <a name="overview"></a>
