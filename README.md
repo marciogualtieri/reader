@@ -26,6 +26,7 @@ If a message's text is a link, the app will attempt to render it as an image and
 One can also change the app's configuration through a "Preferences" screen.
 
 <a name="deploying-and-running-the-application"/>
+
 ## Deploying and Running the Application
 
 To deploy the application to the device:
