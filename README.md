@@ -122,16 +122,21 @@ Message objects are defined as follows:
 ![Complete Class Diagram](https://g.gravizo.com/source/svg/message_class?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
 <!---
 message_class
-        /**
-        *@opt all
-        */
-        class Message {
-            public String id;
-            public String text;
-            public Long timestamp;
-            public Long index;
-            Message(String id, String text, Long timestamp, Long index);
-        }
+@startuml
+object Object01
+object Object02
+object Object03
+object Object04
+object Object05
+object Object06
+object Object07
+object Object08
+
+Object01 <|-- Object02
+Object03 *-- Object04
+Object05 o-- "4" Object06
+Object07 .. Object08 : some labels2
+@enduml
 message_class
 -->
 
