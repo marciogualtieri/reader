@@ -15,7 +15,7 @@
 
 ## Overview
 
-<p align="center"><img alt="Reader Demo" src="images/demo.gif" border=1/></p>
+<p align="center"><img alt="Reader Demo" src="images/demo.gif" border=5/></p>
 
 Reader is a simple android app whose purpose is to showcase my Scala/Android development skills.
 
