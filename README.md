@@ -119,9 +119,9 @@ JSON ([Avro](https://avro.apache.org/), [Protobuffer](https://developers.google.
 
 Message objects are defined as follows:
 
-![Complete Class Diagram](https://g.gravizo.com/source/svg/message_class?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
+![Alt text](https://g.gravizo.com/source/svg/custom_mark2?https%3A%2F%2Fraw.githubusercontent.com%2FTLmaK0%2Fgravizo%2Fmaster%2FREADME.md)
 <!---
-message_class
+custom_mark2
 @startuml
 object Object01
 object Object02
@@ -137,7 +137,7 @@ Object03 *-- Object04
 Object05 o-- "4" Object06
 Object07 .. Object08 : some labels2
 @enduml
-message_class
+custom_mark2
 -->
 
 Each field maps to a field in the JSON message, excepting `index` which represents the index of the page the message was
