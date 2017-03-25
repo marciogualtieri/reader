@@ -7,7 +7,7 @@ import android.widget._
 import com.wire.reader.enums.ui.PreferencesActivityWidgets
 import com.wire.reader.helpers.PreferencesEditor
 import com.wire.reader.ui.customizations.{CustomTransformers, CustomTweaks}
-import macroid.FullDsl.{layoutParams, _}
+import macroid.FullDsl._
 import macroid._
 import macroid.contrib.TextTweaks
 
