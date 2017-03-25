@@ -124,6 +124,7 @@ Message objects are defined as follows:
 
 <!---
 custom_mark2
+
 /**
 *@opt all
 */
@@ -134,6 +135,7 @@ class Message {
     public Long index;
     Message(String id, String text, Long timestamp, Long index);
 }
+
 custom_mark2
 -->
 
