@@ -134,7 +134,7 @@ custom_mark2
         }
 custom_mark2
 -->
-``
+
 Each field maps to a field in the JSON message, excepting `index` which represents the index of the page the message was
 fetched from (`0.json`, `1.json`, `2.json`, etc).
 
