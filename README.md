@@ -52,7 +52,7 @@ You may also only generate a `*.apk` package without deploying it to the device:
 
 ## Running Tests
 
-<p align="center"><img alt="Reader Demo" src="images/test_run.gif" border="1"/></p>
+<p align="center"><img style="border:1px solid #000000" alt="Reader Demo" src="images/test_run.gif"/></p>
 
 Currently, this project supports the following tests:
 
