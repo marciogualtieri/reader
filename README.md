@@ -15,7 +15,7 @@
 
 ## Overview
 
-<p align="center"><img alt="Reader Demo" src="images/demo.gif" /></p>
+<p align="center"><img alt="Reader Demo" src="images/demo.gif" border=1/></p>
 
 Reader is a simple android app whose purpose is to showcase my Scala/Android development skills.
 
@@ -52,7 +52,7 @@ You may also only generate a `*.apk` package without deploying it to the device:
 
 ## Running Tests
 
-<p align="center"><img alt="Reader Demo" src="images/test_run.gif" /></p>
+<p align="center"><img alt="Reader Demo" src="images/test_run.gif" border=1/></p>
 
 Currently, this project supports the following tests:
 
