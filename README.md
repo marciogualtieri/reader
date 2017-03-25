@@ -85,9 +85,9 @@ Raw Git will serve these files at `https://rawgit.com/marciogualtieri/reader/mas
 
 The application is composed of the following components:
 
-![Complete Class Diagram](https://g.gravizo.com/source/svg/reader_class_diagram?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
+![Complete Class Diagram](https://g.gravizo.com/source/svg/custom_mark1?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
 <!---
-reader_class_diagram
+custom_mark1
         interface MessageFetcher {}
         /**
          *@composed 1 Has 1 HttpClient
@@ -107,7 +107,7 @@ reader_class_diagram
          *@composed 1 Has 1 PreferencesEditor
          */
         class PreferencesActivity {}
-reader_class_diagram
+custom_mark1
 -->
 
 I have defined abstractions for both the `MessageFetcher` and `MessageSerializer` as a feel like these are likely to 
@@ -119,9 +119,9 @@ JSON ([Avro](https://avro.apache.org/), [Protobuffer](https://developers.google.
 
 Message objects are defined as follows:
 
-![Complete Class Diagram](https://g.gravizo.com/source/svg/message_class?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
+![Complete Class Diagram](https://g.gravizo.com/source/svg/custom_mark2?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
 <!---
-message_class
+custom_mark2
         /**
         *@opt all
         */
@@ -132,29 +132,10 @@ message_class
             public Long index;
             Message(String id, String text, Long timestamp, Long index);
         }
-message_class
--->
-
-![Alt text](https://g.gravizo.com/source/svg/custom_mark2?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
-<!---
-custom_mark2
-@startuml
-object Object01
-object Object02
-object Object03
-object Object04
-object Object05
-object Object06
-object Object07
-object Object08
-
-Object01 <|-- Object02
-Object03 *-- Object04
-Object05 o-- "4" Object06
-Object07 .. Object08 : some labels2
-@enduml
 custom_mark2
 -->
+
+
 
 Each field maps to a field in the JSON message, excepting `index` which represents the index of the page the message was
 fetched from (`0.json`, `1.json`, `2.json`, etc).
