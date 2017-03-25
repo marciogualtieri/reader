@@ -119,7 +119,23 @@ JSON ([Avro](https://avro.apache.org/), [Protobuffer](https://developers.google.
 
 Message objects are defined as follows:
 
-![Alt text](https://g.gravizo.com/source/svg/custom_mark2?https%3A%2F%2Fraw.githubusercontent.com%2FTLmaK0%2Fgravizo%2Fmaster%2FREADME.md)
+![Complete Class Diagram](https://g.gravizo.com/source/svg/message_class?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
+<!---
+message_class
+        /**
+        *@opt all
+        */
+        class Message {
+            public String id;
+            public String text;
+            public Long timestamp;
+            public Long index;
+            Message(String id, String text, Long timestamp, Long index);
+        }
+message_class
+-->
+
+![Alt text](https://g.gravizo.com/source/svg/custom_mark2?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
 <!---
 custom_mark2
 @startuml
