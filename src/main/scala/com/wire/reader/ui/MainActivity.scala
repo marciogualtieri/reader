@@ -28,23 +28,19 @@ class MainActivity extends Activity with Contexts[Activity]
   with PreferencesEditor {
 
   val MessagesCacheFile = "messages.json"
-
   var serializer = JsonMessageSerializer()
-
   var messages: ListBuffer[Message] = ListBuffer.empty[Message]
-
   var messageListSlot: Option[ListView] = slot[ListView]
-
   var progressImageSlot: Option[GifImageView] = slot[GifImageView]
 
-  override def onCreate(savedInstanceState: Bundle): Unit = {
+  val PaddingSize = 2
 
+  override def onCreate(savedInstanceState: Bundle): Unit = {
     super.onCreate(savedInstanceState)
     setPermitAllThreadPolicy()
     messages ++= cachedMessages
 
     val view = l[LinearLayout](
-
       l[LinearLayout](
         w[Button] <~
           id(MainActivityWidgets.READ_BUTTON.id) <~
@@ -110,7 +106,7 @@ class MainActivity extends Activity with Contexts[Activity]
         layoutParams[LinearLayout](MATCH_PARENT, WRAP_CONTENT)
 
     ) <~
-      padsAll(2) <~
+      padsAll(PaddingSize) <~
       orientedLinearLayoutTweak <~
       alignedLinearLayoutTweek
 

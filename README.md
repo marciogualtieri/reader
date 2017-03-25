@@ -335,3 +335,5 @@ For my own reference, I used [peek](https://github.com/phw/peek) for generating 
  executing `sbt scalastyle`. It doesn't seem to affect IntelliJ though.
  * Add more UI tests.
  * Port AndroidTests to Scala.
+ * For now the screens are small (and therefore activities are small), but might be worth to extract view and action 
+ code into separated classes for viewers and controllers.
