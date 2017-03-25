@@ -9,7 +9,7 @@ import scala.io.Source
 
 trait TestHelper {
 
-  //scalastyle:off
+  //scalastyle:off magic.number
   val TestMessagesEndpoint0 = List(
     Message(id = "george1", time = 1463372338305L, text = "You’ve got to apologize.", index = 0),
     Message(id = "jerry1", time = 1463372338485L, text = "Why?", index = 0),
@@ -18,9 +18,11 @@ trait TestHelper {
   )
 
   val TestMessagesEndpoint1 = List(
-    Message(id = "customer1", time = 1463372339025L, text = "Now, what is the difference between the GT and the GTS?", index = 1),
+    Message(id = "customer1",
+      time = 1463372339025L, text = "Now, what is the difference between the GT and the GTS?", index = 1),
     Message(id = "larry1", time = 1463372339205L, text = "OK, the GTS is \"guaranteed tremendous safety\".", index = 1),
-    Message(id = "customer2", time = 1463372339385L, text = "So, without the \"S\", it's just \"guaranteed tremendous\"?", index = 1)
+    Message(id = "customer2",
+      time = 1463372339385L, text = "So, without the \"S\", it's just \"guaranteed tremendous\"?", index = 1)
   )
 
   val TestMessagesEndpoint2 = List(
@@ -28,10 +30,11 @@ trait TestHelper {
     Message(id = "rick1", time = 1463372339745L, text = "You pass butter.", index = 2),
     Message(id = "robot2", time = 1463372339925L, text = "Oh, my god...", index = 2),
     Message(id = "rick2", time = 1463372340105L, text = "Yeah. Welcome to the club, pal.", index = 2),
-    Message(id = "rick3", time = 1463372340285L, text = "https://rawgit.com/marciogualtieri/reader/master/src/test/resources/reader/rickandmorty.png", index = 2),
+    Message(id = "rick3", time = 1463372340285L,
+      text = "https://rawgit.com/marciogualtieri/reader/master/src/test/resources/reader/rickandmorty.png", index = 2),
     Message(id = "rick4", time = 1463372340465L, text = "https://this.is.a/broken/link/image/morty.png", index = 2)
   )
-  //scalastyle:on
+  //scalastyle:on magic.number
 
   val AllTestMessages: List[Message] = TestMessagesEndpoint0 ++ TestMessagesEndpoint1 ++ TestMessagesEndpoint2
 
