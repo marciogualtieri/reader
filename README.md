@@ -120,22 +120,29 @@ JSON ([Avro](https://avro.apache.org/), [Protobuffer](https://developers.google.
 
 Message objects are defined as follows:
 
-![Message Class](https://g.gravizo.com/source/svg/custom_mark2?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
+![Complete Class Diagram](https://g.gravizo.com/source/svg/custom_mark2?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
 
 <!---
 custom_mark2
-
+interface MessageFetcher {}
 /**
-*@opt all
-*/
-class Message {
-    public String id;
-    public String text;
-    public Long timestamp;
-    public Long index;
-    Message(String id, String text, Long timestamp, Long index);
-}
-
+ *@composed 1 Has 1 HttpClient
+ */
+class HttpMessageFetcher implements MessageFetcher {}
+class HttpClient {}
+interface MessageSerializer {}
+class JsonMessageSerializer implements MessageSerializer {}
+class PreferencesEditor {}
+/**
+ *@composed 1 Has 1 MessageFetcher
+ *@composed 1 Has 1 MessageSerializer
+ *@composed 1 Has 1 PreferencesEditor
+ */
+class MainActivity {}
+/**
+ *@composed 1 Has 1 PreferencesEditor
+ */
+class PreferencesActivity {}
 custom_mark2
 -->
 
