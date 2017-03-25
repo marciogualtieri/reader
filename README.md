@@ -4,11 +4,11 @@
 ### [Overview](#overview)
 ### [Deploying and Running the Application](#deploying-and-running-the-application)
 ### [Running Tests](#running-tests)
-### [Application Design](#application-design)
+### [Design](#design)
 ### [Code Quality Analysis](#code-quality-analysis)
 ### [Developer Notes](#developer-notes)
 #### [Creating an Android Project](#creating-an-android-project)
-#### [Android Emulator](#android-emulator)
+#### [Emulator](#emulator)
 ### [Final Notes](#final-notes)
 
 <a name="overview"/>
@@ -81,7 +81,7 @@ Raw Git will serve these files at `https://rawgit.com/marciogualtieri/reader/mas
 
 <a name="application-design"/>
 
-## Application Design
+## Design
 
 The application is composed of the following components:
 
@@ -224,9 +224,9 @@ and install it under `~/.android/sbt/sdk` as they are needed.
 
 <a name="android-emulator"/>
 
-### Android Emulator
+### Emulator
 
-#### Install the Emulator
+#### Install
 
 You may use `sdkmanager` to install the emulator. Execute the following command to get a list of what's already 
 installed:
@@ -239,7 +239,7 @@ If `emulator` isn't present on the list, execute the following command:
 
     ~/.android/sbt/sdk/tools/bin/sdkmanager emulator
 
-#### Emulator's Dependencies
+#### Dependencies
 
 Google Android APIs:
 
@@ -264,7 +264,7 @@ Android Platform:
 
 *Change according with the API and platform used. In this example, the emulator is named "test".*
 
-#### Running the Emulator
+#### Running
 
     ~/.android/sbt/sdk/tools/emulator -avd test
 
