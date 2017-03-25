@@ -107,6 +107,7 @@ class MainActivity {}
  *@composed 1 Has 1 PreferencesEditor
  */
 class PreferencesActivity {}
+custom_mark
 -->
 
 I have defined abstractions for both the `MessageFetcher` and `MessageSerializer` as a feel like these are likely to 
@@ -120,6 +121,7 @@ Message objects are defined as follows:
 
 ![Complete Class Diagram](https://g.gravizo.com/source/svg/custom_mark?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
 <!---
+custom_mark
 /**
 *@opt all
 */
@@ -130,6 +132,7 @@ class Message {
     public Long index;
     Message(String id, String text, Long timestamp, Long index);
 }
+custom_mark
 -->
 
 Each field maps to a field in the JSON message, excepting `index` which represents the index of the page the message was
