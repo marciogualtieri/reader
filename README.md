@@ -85,10 +85,10 @@ Raw Git will serve these files at `https://rawgit.com/marciogualtieri/reader/mas
 
 The application is composed of the following components:
 
-![](https://g.gravizo.com/source/svg/class_diagram_mark?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
+![](https://g.gravizo.com/source/svg/custom_mark_class_diagram?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
 
 <!---
-class_diagram_mark
+custom_mark_class_diagram
 interface MessageFetcher {}
 /**
  *@composed 1 Has 1 HttpClient
@@ -108,7 +108,7 @@ class MainActivity {}
  *@composed 1 Has 1 PreferencesEditor
  */
 class PreferencesActivity {}
-class_diagram_mark
+custom_mark_class_diagram
 -->
 
 I have defined abstractions for both the `MessageFetcher` and `MessageSerializer` as a feel like these are likely to 
@@ -120,10 +120,10 @@ JSON ([Avro](https://avro.apache.org/), [Protobuffer](https://developers.google.
 
 Message objects are defined as follows:
 
-![](https://g.gravizo.com/source/svg/message_class_mark?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
+![](https://g.gravizo.com/source/svg/custom_mark_message_class?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
 
 <!---
-message_class_mark
+custom_mark_message_class
 /**
 *@opt all
 */
@@ -134,7 +134,7 @@ class Message {
     public Long index;
     Message(String id, String text, Long timestamp, Long index);
 }
-message_class_mark
+custom_mark_message_class
 -->
 
 Each field maps to a field in the JSON message, excepting `index` which represents the index of the page the message was
