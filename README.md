@@ -105,7 +105,7 @@ The application is composed of the following components:
      *@composed 1 Has 1 PreferencesEditor
      */
     class PreferencesActivity {}
-    )
+)
 
 I have defined abstractions for both the `MessageFetcher` and `MessageSerializer` as a feel like these are likely to 
 change. 
