@@ -116,6 +116,7 @@ JSON ([Avro](https://avro.apache.org/), [Protobuffer](https://developers.google.
 
 Message objects are defined as follows:
 
+
 ![Message Class](http://g.gravizo.com/g?
     /**
     *@opt all
@@ -128,6 +129,7 @@ Message objects are defined as follows:
         Message(String id, String text, Long timestamp, Long index);
     }
 )
+
 
 Each field maps to a field in the JSON message, excepting `index` which represents the index of the page the message was
 fetched from (`0.json`, `1.json`, `2.json`, etc).
