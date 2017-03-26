@@ -19,10 +19,10 @@ libraryDependencies ++=
   "org.scalatest" %% "scalatest" % "3.0.1" % "test" ::
     "com.github.tomakehurst" % "wiremock" % "2.5.1" % "test" ::
     "ch.qos.logback" % "logback-classic" % "1.2.1" % "test" ::
-    "com.android.support.test" % "runner" % "0.5" ::
-    "com.android.support.test.espresso" % "espresso-core" % "2.2.2" ::
+    "com.android.support.test" % "runner" % "0.5" % "androidTest" ::
+    "com.android.support.test.espresso" % "espresso-core" % "2.2.2" % "androidTest" ::
     "com.google.guava" % "guava" % "18.0" % "test" ::
-    "com.google.code.findbugs" % "jsr305" % "3.0.1" ::
+    "com.google.code.findbugs" % "jsr305" % "3.0.1" % "test" ::
     "org.json4s" %% "json4s-jackson" % "3.5.0" ::
     "org.apache.httpcomponents" % "httpclient" % "4.5.3" ::
     aar("org.macroid" %% "macroid" % "2.0") ::

@@ -34,7 +34,7 @@ class PreferencesActivity extends Activity with Contexts[Activity]
             TextTweaks.size(TextEditSize) <~
             text(endpointPreferenceValue)
         )<~
-          layoutParams[LinearLayout](WRAP_CONTENT, WRAP_CONTENT, 1),
+          layoutParams[LinearLayout](WRAP_CONTENT, WRAP_CONTENT),
         l[LinearLayout](
           w[TextView] <~ text("Offset:") <~
             TextTweaks.size(TextLabelSize) <~ TextTweaks.bold,
@@ -44,7 +44,7 @@ class PreferencesActivity extends Activity with Contexts[Activity]
             TextTweaks.numeric <~
             text(offsetPreferenceValue.toString)
         )<~
-          layoutParams[LinearLayout](WRAP_CONTENT, WRAP_CONTENT, Int.MaxValue),
+          layoutParams[LinearLayout](WRAP_CONTENT, WRAP_CONTENT, 1),
 
       l[LinearLayout](
         w[Button] <~
