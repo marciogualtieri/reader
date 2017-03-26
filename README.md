@@ -24,7 +24,7 @@ text is a link, the app will attempt to render it as an image and display it.
 
 One can also change the app's configuration through a "Preferences" screen.
 
-Despite the app's simplicity (in terms of features), the project itself aims to cover all engineering requirements to 
+Despite the app's simplicity (feature-wise), the project itself aims to cover all engineering requirements to 
 create production ready Android code. It includes unit tests, android tests (instrumentation and UI), code style check 
 and coverage reports (TODO).
 
@@ -42,7 +42,7 @@ To deploy the application and run it:
 
 >***Note:***
 >You will need to connect to an emulator or an actual Android phone connect to your computer's USB port.
->You will find some tips on the [Developer Notes](#developer-notes) section.
+>You will find some tips in the [Developer Notes](#developer-notes) section.
 
 You may also only generate a `*.apk` package without deploying it to the device:
 
