@@ -120,10 +120,10 @@ JSON ([Avro](https://avro.apache.org/), [Protobuffer](https://developers.google.
 
 Message objects are defined as follows:
 
-![](https://g.gravizo.com/source/svg/custom_mark2?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
+![](https://g.gravizo.com/source/svg/custom_mark4?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
 
 <!---
-custom_mark2
+custom_mark4
 /**
 *@opt all
 */
@@ -134,7 +134,7 @@ class Message {
     public Long index;
     Message(String id, String text, Long timestamp, Long index);
 }
-custom_mark2
+custom_mark4
 -->
 
 Each field maps to a field in the JSON message, excepting `index` which represents the index of the page the message was
