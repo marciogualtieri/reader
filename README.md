@@ -85,7 +85,7 @@ Raw Git will serve these files at `https://rawgit.com/marciogualtieri/reader/mas
 
 The application is composed of the following components:
 
-![](https://g.gravizo.com/source/svg/custom_mark111?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
+![](https://g.gravizo.com/source/svg/custom_mark3?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
 
 <!---
 custom_mark3
