@@ -88,7 +88,7 @@ The application is composed of the following components:
 ![](https://g.gravizo.com/source/svg/custom_mark111?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
 
 <!---
-custom_mark111
+custom_mark3
 interface MessageFetcher {}
 /**
  *@composed 1 Has 1 HttpClient
@@ -108,7 +108,7 @@ class MainActivity {}
  *@composed 1 Has 1 PreferencesEditor
  */
 class PreferencesActivity {}
-custom_mark111
+custom_mark3
 -->
 
 I have defined abstractions for both the `MessageFetcher` and `MessageSerializer` as a feel like these are likely to 
