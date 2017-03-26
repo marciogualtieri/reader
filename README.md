@@ -85,10 +85,10 @@ Raw Git will serve these files at `https://rawgit.com/marciogualtieri/reader/mas
 
 The application is composed of the following components:
 
-![](https://g.gravizo.com/source/svg/custom_mark1?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
+![](https://g.gravizo.com/source/svg/custom_mark11?https%3A%2F%2Fraw.githubusercontent.com%2Fmarciogualtieri%2Freader%2Fmaster%2FREADME.md)
 
 <!---
-custom_mark1
+custom_mark11
 interface MessageFetcher {}
 /**
  *@composed 1 Has 1 HttpClient
@@ -108,7 +108,7 @@ class MainActivity {}
  *@composed 1 Has 1 PreferencesEditor
  */
 class PreferencesActivity {}
-custom_mark1
+custom_mark11
 -->
 
 I have defined abstractions for both the `MessageFetcher` and `MessageSerializer` as a feel like these are likely to 
