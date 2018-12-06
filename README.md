@@ -73,10 +73,10 @@ To run UI tests, execute the following command:
 For the UI tests, I'm using [Raw Git](https://rawgit.com) to serve the test JSON files available in this project's Git 
 repository. Tests files are available under `src/test/resources/reader`.
 
-Raw Git will serve these files at `https://rawgit.com/marciogualtieri/reader/master/src/test/resources/reader`, e.g.:
+Raw Git will serve these files at `https://cdn.jsdelivr.net/gh/marciogualtieri/reader/src/test/resources/reader`, e.g.:
 
-     https://rawgit.com/marciogualtieri/reader/master/src/test/resources/reader/0.json
-     https://rawgit.com/marciogualtieri/reader/master/src/test/resources/reader/1.json
+     https://cdn.jsdelivr.net/gh/marciogualtieri/reader/src/test/resources/reader/0.json
+     https://cdn.jsdelivr.net/gh/marciogualtieri/reader/src/test/resources/reader/1.json
      https://rawgit.com/marciogualtieri/reader/master/src/test/resources/reader/3.json
 
 <a name="application-design"/>
