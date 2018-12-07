@@ -21,7 +21,7 @@ import static junit.framework.Assert.*;
 
 public class UITestHelper {
     public static final String TEST_ENDPOINT =
-            "https://rawgit.com/marciogualtieri/reader/master/src/test/resources/reader";
+            "https://cdn.jsdelivr.net/gh/marciogualtieri/reader/src/test/resources/reader";
 
     public static final int TEST_OFFSET = 0;
 
@@ -44,7 +44,7 @@ public class UITestHelper {
     private static final Message rick1 = new Message("rick1",  1463372339745L,  "You pass butter.",  2);
     private static final Message robot2 = new Message("robot2",  1463372339925L,  "Oh, my god...",  2);
     private static final Message rick2 = new Message("rick2",  1463372340105L,  "Yeah. Welcome to the club, pal.",  2);
-    private static final Message rick3 = new Message("rick3",  1463372340285L,  "https://rawgit.com/marciogualtieri/reader/master/src/test/resources/reader/rickandmorty.png",  2);
+    private static final Message rick3 = new Message("rick3",  1463372340285L,  "https://cdn.jsdelivr.net/gh/marciogualtieri/reader/src/test/resources/reader/rickandmorty.png",  2);
     private static final Message rick4 = new Message("rick4",  1463372340465L,  "https://this.is.a/broken/link/image/morty.png",  2);
 
     private static final List<Message> TestMessagesEndpoint2 = Arrays.asList(robot1, rick1, robot2, rick2, rick3, rick4);

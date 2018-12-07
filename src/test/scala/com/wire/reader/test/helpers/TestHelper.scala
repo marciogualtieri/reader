@@ -31,7 +31,7 @@ trait TestHelper {
     Message(id = "robot2", time = 1463372339925L, text = "Oh, my god...", index = 2),
     Message(id = "rick2", time = 1463372340105L, text = "Yeah. Welcome to the club, pal.", index = 2),
     Message(id = "rick3", time = 1463372340285L,
-      text = "https://rawgit.com/marciogualtieri/reader/master/src/test/resources/reader/rickandmorty.png", index = 2),
+      text = "https://cdn.jsdelivr.net/gh/marciogualtieri/reader/src/test/resources/reader/rickandmorty.png", index = 2),
     Message(id = "rick4", time = 1463372340465L, text = "https://this.is.a/broken/link/image/morty.png", index = 2)
   )
   //scalastyle:on magic.number
